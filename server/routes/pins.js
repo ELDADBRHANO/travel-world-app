@@ -2,7 +2,7 @@ const router = require('express').Router();
 const Pin = require('../models/Pin');
 
 
-router.post('/API',async(req,res)=>{
+router.post('/',async(req,res)=>{
   const pinToPost = new Pin(req.body)
 
   try {

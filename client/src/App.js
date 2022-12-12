@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import {Map, NavigationControl} from "react-map-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
+import axios from 'axios';
 
 function App() {
+
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Map
+      container={'map'}
+      projection= {'globe'}
+        initialViewState={{}}
+        mapboxAccessToken={process.env.REACT_APP_TOKEN}
+        style={{width:"100vw",height:"100vh"}}
+        mapStyle="mapbox://styles/eldadbrhano/clbkq3wgl004l14pf1vyos26y"
+      >
+        <NavigationControl/>
+
+
+
+      </Map>
     </div>
   );
 }
