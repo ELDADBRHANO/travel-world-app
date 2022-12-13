@@ -88,8 +88,10 @@ function GlobalMap() {
       ))}
     </Map>
 
-    <div>
+    <div >
+      <div>
       <Footer/>
+      </div>
     </div>
   </div>
   )

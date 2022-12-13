@@ -18,8 +18,8 @@ function Footer() {
           </div>)
         }
       </div>
-      {showRegister&&<Register/>}
-      {showLogin&&<Login/>}
+      {showRegister&&<Register setShowRegister={setShowRegister}/>}
+      {showLogin&&<Login setShowRegister={setShowRegister} setShowLogin={setShowLogin}/>}
     </div>
   )
 }
