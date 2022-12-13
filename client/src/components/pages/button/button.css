@@ -1,0 +1,8 @@
+.genericBtn{
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  background-color: slateblue;
+  border-radius: 10px;
+  font-weight: 700;
+}
