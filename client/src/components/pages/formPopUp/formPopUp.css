@@ -1,0 +1,31 @@
+form{
+  width:250px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+input,textarea{
+  border: none;
+  outline: none;
+  border-bottom: 1px solid grey;
+}
+
+input::placeholder,textarea::placeholder{
+  font-size: 12px;
+  color: grey;
+}
+
+.submitBtn{
+  border: none;
+  padding: 5px;
+  border-radius: 10px;
+  color: white;
+  background-color: rgb(86, 245, 150);
+}
+
+.submitBtn:hover{
+  background-color: tomato;
+  cursor: pointer;
+}
