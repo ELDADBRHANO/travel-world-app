@@ -7,7 +7,7 @@ import UserProvider from "./context/user";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <PinProvider>
+  // <PinProvider>
      <UserProvider>
     <PlaceProvider>
       <React.StrictMode>
@@ -15,6 +15,6 @@ root.render(
       </React.StrictMode>
     </PlaceProvider>
   </UserProvider>
-  </PinProvider>
+  // </PinProvider>
  
 );

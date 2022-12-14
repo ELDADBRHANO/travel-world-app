@@ -17,14 +17,14 @@ function FormPopUp({ setPins, pin }) {
   const [decr, setDescr] = useState(null);
   const { currentUser, setCurrentUser } = useContext(userContext);
   const [rating, setRating] = useState(1);
-  const handleAddClick = (e) => {
-    let lat = e.lngLat.lat;
-    let lon = e.lngLat.lng;
-    setNewPlace({
-      lat: lat,
-      lng: lon,
-    });
-  };
+  // const handleAddClick = (e) => {
+  //   let lat = e.lngLat.lat;
+  //   let lon = e.lngLat.lng;
+  //   setNewPlace({
+  //     lat: lat,
+  //     lng: lon,
+  //   });
+  // };
   const handlePinSubmit = async (e) => {
     e.preventDefault();
     const newPin = {
@@ -38,9 +38,9 @@ function FormPopUp({ setPins, pin }) {
     try {
       if (!currentUser) {
         userNotLoggedIn();
-      } else {
+      } 
         const response = await axios.post("/pins", newPin);
-       
+       console.log(...pin);
         setPins([...pin, response.data]);
        
         
@@ -51,7 +51,7 @@ function FormPopUp({ setPins, pin }) {
         setRating(1);
         setDescr(null);
         setTitle(null);
-      }
+      
     } catch (error) {
       pinAddedFailure();
       console.log(error);
