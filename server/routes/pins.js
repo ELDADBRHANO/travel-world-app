@@ -6,8 +6,7 @@ router.post('/',async(req,res)=>{
   const pinToPost = new Pin(req.body)
 
   try {
-    const savedPin = await pinToPost.save()
-
+    const savedPin = await pinToPost.save();
     res.status(200).json(savedPin)
     console.log('\x1b[42m%s\x1b[0m','[Success] pin added successfully');
   } catch (error) {

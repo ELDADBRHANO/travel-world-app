@@ -10,7 +10,7 @@ import {
 } from "../../../utils/tostifyNotify";
 import Button from "../button/button";
 import "./formPopUp.css";
-function FormPopUp({ setPins, pin }) {
+function FormPopUp({ pin, setPins }) {
   
   const { newPlace, setNewPlace } = useContext(placeContext);
   const [title, setTitle] = useState(null);
@@ -38,9 +38,9 @@ function FormPopUp({ setPins, pin }) {
     try {
       if (!currentUser) {
         userNotLoggedIn();
-      } 
+      } else{
+
         const response = await axios.post("/pins", newPin);
-       console.log(...pin);
         setPins([...pin, response.data]);
        
         
@@ -51,6 +51,7 @@ function FormPopUp({ setPins, pin }) {
         setRating(1);
         setDescr(null);
         setTitle(null);
+      }
       
     } catch (error) {
       pinAddedFailure();

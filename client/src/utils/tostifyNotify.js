@@ -10,7 +10,7 @@ export const userNotLoggedIn =()=>{
 
 
 export const userLoggedOut =(users)=>{
-  toast.warning(`Log out from ${users}!`)
+  toast.success(`${users} just Log out.`)
 }
 
 

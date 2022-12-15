@@ -11,8 +11,18 @@ import Footer from "../Footer/footer";
 import { userContext } from "../../../context/user";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import {
+  pinAddedFailure,
+  pinAddedSuccess,
+  userNotLoggedIn,
+} from "../../../utils/tostifyNotify";
+
+
+
+
 function GlobalMap() {
   const [pins, setPins] = useState([]);
+  console.log('pins:', pins);
   const [viewPort, setViewPort] = useState({
     longitude: 12.4,
     latitude: 37.8,
@@ -30,6 +40,43 @@ function GlobalMap() {
       lat: lat,
       lng: lon,
     });
+  };
+
+
+  const [rating, setRating] = useState(1);
+
+  const handlePinSubmit = async (e) => {
+    e.preventDefault();
+    const newPin = {
+      userName: currentUser,
+      title: title,
+      rating: rating,
+      desc: decr,
+      lat: newPlace.lat,
+      lon: newPlace.lng,
+    };
+    try {
+      if (!currentUser) {
+        userNotLoggedIn();
+      } else{
+
+        const response = await axios.post("/pins", newPin);
+        setPins([...pins, response.data]);
+       
+        
+        setNewPlace(null);
+        // notify user on success
+        pinAddedSuccess();
+
+        setRating(1);
+        setDescr(null);
+        setTitle(null);
+      }
+      
+    } catch (error) {
+      pinAddedFailure();
+      console.log(error);
+    }
   };
 
   const handleMarkerClicked = (id, lat, lon) => {
@@ -81,7 +128,7 @@ function GlobalMap() {
             {pin._id === currentPlacedId && <PopUp pin={pin} />}
 
             {newPlace && (
-              <FormPopUp pin={pin} newPlace={newPlace} setPins={setPins} />
+              <FormPopUp pin={pins} setPins={setPins} />
             )}
           </>
         ))}

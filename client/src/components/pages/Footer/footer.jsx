@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react'
 import { userContext } from '../../../context/user'
+import { userLoggedOut } from '../../../utils/tostifyNotify'
 import Login from '../login/login'
 import Register from '../register/register'
 import './footer.css'
@@ -8,6 +9,7 @@ function Footer() {
   const [showRegister, setShowRegister] = useState(null)
   const [showLogin, setShowLogin] = useState(null)
   const handleLogOut=()=>{
+    userLoggedOut(currentUser)
     setCurrentUser(null)
   }
   return (
